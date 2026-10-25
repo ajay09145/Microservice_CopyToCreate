@@ -1,0 +1,51 @@
+﻿
+@using Mango.Web.Models
+@model IEnumerable<CouponDto>
+
+<div class="card shadow border-0 mt-4">
+    <div class="card-header bg-secondary bg-gradient ml-0 py-3">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1 class="text-white">Coupons List</h1>
+            </div>
+        </div>
+    </div>
+    <div class="card-body p-4">
+        <div class="row pb-3">
+            <div class="col-6">
+            </div>
+            <div class="col-6 text-end">
+                <a asp-action="CouponCreate" class="btn btn-outline-primary"><i class="bi bi-plus-square"></i>Create New Coupon</a>
+            </div>
+        </div>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>Coupon Id</td>
+                    <td>Coupon Code</td>
+                    <td>Discount Amount</td>
+                    <td>Minimum Amount</td>
+                    <td>Actions</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var coupon in Model)
+                {
+                    <tr>
+                        <td>@coupon.CouponId</td>
+                        <td>@coupon.CouponCode</td>
+                        <td>@coupon.DicountAmount</td>
+                        <td>@coupon.MinAount</td>
+                        <td>
+                            <a class="btn btn-outline-primary"><i class="bi bi-pencil-square"></i>Edit</a>
+                            <a asp-action="CouponDelete" asp-route-couponId="@coupon.CouponId" class="btn btn-outline-danger"><i class="bi bi-trash"></i>Delete</a>
+                        </td>
+                    </tr>
+                }
+        </table>
+
+    </div>
+
+
+</div>

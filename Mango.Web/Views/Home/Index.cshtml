@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Mango.Web.Models.ProductDto>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<form>
+    <div class="container row">
+        @foreach (var item in Model)
+        {
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="p-0 my-3 border rounded">
+                    <div>
+                        <div class="card">
+                            <h3 class="card-title text-white-50 text-center py-2">@item.Name</h3>
+                            <img src="https://placehold.co/600x400" class="card-img-top" />
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between py-2">
+                                    <span class="text-danger" style="fornt-size:20px;">$@item.Price</span>
+                                    <span class="badge bg-warning text-white p-2">@item.CategoryName</span>
+                                </div>
+                                <p class="card-text">@Html.Raw(@item.Description)</p>
+                                <div class="row">
+                                    <div class="col">
+                                        <a asp-action="ProductDetails" asp-route-productId="@item.ProductId" class="btn btn-success form-control">Details</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        
+        @* <div class="col-12 col-md-6 col-lg-4"> 
+            <div class="p-0 my-3 border rounded">
+                <div>
+                    <div class="card">
+                        <h3 class="card-title text-white-50 text-center py-2">Name</h3>
+                        <img src="https://placehold.co/600x400" class="card-img-top" />
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between py-2">
+                                <span class="text-danger" style="fornt-size:20px;">xx</span>
+                                <span class="badge bg-warning text-white p-2">Category Name</span>
+                            </div>
+                            <p class="card-text">Description</p>
+                            <div class="row">
+                                <div class="col">
+                                    <a class="btn btn-success form-control">Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div> *@
+
+    </div>
+</form>
